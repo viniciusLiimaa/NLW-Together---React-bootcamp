@@ -44,3 +44,61 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+# Additionals information (own notes):
+## Sass
+1. `npm intall node-sass@5.0.0`
+
+## React router dom
+[React router dom](https://reactrouter.com/web/guides/quick-start) is being used to handle different components as pages and show them in the browser.
+1. `yarn add react-router-dom`
+2. `yarn add @types/react-router-dom -D` (In order to use it with typescript)
+
+### How to navigate through pages with react router dom?
+
+#### Setting the app module
+The modules involved in the routing process must be encapsulated inside `<BrowserRouter>` tags, as follows:
+```
+function App() {
+  return (
+    <BrowserRouter>
+      <Route path="/" exact component={Home}/>
+      <Route path="/rooms/new" component={NewRoom}/>
+    
+    </BrowserRouter>
+  );
+}
+```
+
+##### Link (when using an anchor tag)
+1. `import { Link } from 'react-router-dom';`
+2. Add a link as you would with a <a> tag: `<Link to="/">Click here</Link>`. The property `to` indicates the page where you want to go.
+
+##### useHistory (when using a button)
+1. `import { useHistory } from 'react-router-dom';`
+2. Create a function that redirects the user to the new page:
+```
+  function navigateToNewRoom() {
+    useHistory().push('/rooms/new')
+  }
+```
+3. Assign it to the button through `onClick`: `<button onClick={navigateToNewRoom} className="create-room">`
+
+## React context
+1. `import { createContext } from 'react';`
+2. `export const TestContext = createContext('');`
+3. Encapsulate components that must watch for context value, as follows:
+```
+<BrowserRouter>
+  <TestContext.Provider value={'Teste'}>
+    <Route path="/" exact component={Home}/>
+    <Route path="/rooms/new" component={NewRoom}/>
+  </TestContext.Provider> 
+</BrowserRouter>
+```
+4. In order to listen for the context value in the desired module, do as follow:
+```
+import { useContext } from 'react';
+const value = useContext(TestContext)
+```
