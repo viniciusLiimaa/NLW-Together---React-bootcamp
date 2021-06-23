@@ -1,0 +1,32 @@
+@import './utilities/variables.scss';
+
+
+.room-code {
+  height: 40px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: $white;
+  border: 1px solid $purple;
+  cursor: pointer;
+  display: flex;
+
+  div {
+    background: $purple;
+    padding: 0 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  span {
+    display: block;
+    align-self: center;
+    flex: 1;
+    width: 240px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+}

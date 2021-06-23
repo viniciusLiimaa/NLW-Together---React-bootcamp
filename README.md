@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Live chat Q&A app
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -47,6 +47,31 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 
 # Additionals information (own notes):
+
+## Firebase auth rules
+```json
+{
+  "rules": {
+    "rooms": {
+      ".read": false,
+      ".write": "auth != null",
+      "$roomId": {
+        ".read": true,
+        ".write": "auth != null && (!data.exists() || data.child('authorId').val() == auth.id)",
+        "questions": {
+          ".read": true,
+          ".write": "auth != null && (!data.exists() || data.parent().child('authorId').val() == auth.id)",
+          "likes": {
+            ".read": true,
+            ".write": "auth != null && (!data.exists() || data.child('authorId').val() == auth.id)",  
+          }
+        }
+      }
+    }
+  }
+}
+```
+
 ## Sass
 1. `npm intall node-sass@5.0.0`
 
@@ -57,7 +82,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ### How to navigate through pages with react router dom?
 
-#### Setting the app module
+### Setting the app module
 The modules involved in the routing process must be encapsulated inside `<BrowserRouter>` tags, as follows:
 ```
 function App() {
@@ -71,11 +96,13 @@ function App() {
 }
 ```
 
-##### Link (when using an anchor tag)
+### Link
+Use this when utilizing an anchor tag
 1. `import { Link } from 'react-router-dom';`
-2. Add a link as you would with a <a> tag: `<Link to="/">Click here</Link>`. The property `to` indicates the page where you want to go.
+2. Add a link as you would with a anchor tag: `<Link to="/">Click here</Link>`. The property `to` indicates the page where you want to go.
 
-##### useHistory (when using a button)
+### useHistory
+Use this when utilizing a button
 1. `import { useHistory } from 'react-router-dom';`
 2. Create a function that redirects the user to the new page:
 ```
