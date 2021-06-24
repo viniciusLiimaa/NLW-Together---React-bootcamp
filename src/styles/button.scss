@@ -24,6 +24,12 @@
     cursor: not-allowed;
   }
 
+  &.outlined {
+    background: $white;
+    border: 1px solid $purple;
+    color: $purple;
+  }
+
   img {
     margin-right: 8px;
   }

@@ -1,0 +1,69 @@
+@import './utilities/base';
+@import './utilities/variables';
+
+.question {
+  background: rgb(247, 244, 244);
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  padding: 24px;
+
+  & + .question {
+    margin-top: 8px;
+  }
+
+
+  p {
+    color: black;
+  }
+
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+
+    button {
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+
+      &.like-button {
+        display: flex;
+        align-items: flex-end;
+        color: black;
+        gap: 8px;
+        transition: filter 0.2s;
+        
+
+        &.liked {
+          color: $light-purple;
+
+          svg path {
+            stroke: $light-purple;
+          }
+        }
+
+        &:hover {
+          filter: brightness(0.7);
+        }
+      }
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      
+      img {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+      }
+
+      span {
+        font-size: 14px;
+        color: $light-gray;
+        margin-left: 8px;
+      }
+    }
+  }
+}
